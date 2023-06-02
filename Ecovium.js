@@ -23,18 +23,6 @@ intent(`Go to the order page`, p => {
   p.play(`Opening the order page...`);
 });
 
-/*onCreateUser(p => {
-    p.userData.index = {en: "1|2|3|4"};
-    p.userData.articleNumber = {en: "202028|202023|202018|202016"};
-    p.userData.descriptions = {en: "calculator|pen|safety sign|suitcase"};
-    p.userData.batch = {en: "24685|87495"};
-    p.userData.variant = {en: "red|blue|yellow"};
-    p.userData.weight = {en: "0.03|0.01|0.31|2.91"};
-    p.userData.location = {en: "BEW|BVE|FBL020101"};
-    p.userData.pid = {en: "201910|201587|9000113|9000114"};
-    p.userData.quantity = {en: "1|2|3"};
-    p.userData.storingDate = {en: "19.10.2022|18.10.2022"};
-}); */
 
 onVisualState((p, s) => {
     if (s.values) {
@@ -48,11 +36,6 @@ intent('Show me all the items containing the (word|phrase) $(ITEM~ v:wordlist)',
   p.play(`Showing all the items containing the word ${p.ITEM.value}`);
 });
 
-/* intent('Add $(ITEM* .+) to (the|) stock (information|) (table|) (with|) (the|) (article number|) $(ARTNUMBER* .+|) (and|) (the|) (batch number|) $(BATCH* .+|)', p => {
-    p.userData.descriptions.en += '|' + p.ITEM.value;
-    p.play({command: 'addItem', item: p.ITEM.value, artNumber: p.ARTNUMBER.value, batch: p.BATCH.value});
-    p.play(`${p.ITEM.value} is added`);
-}); */
 
 intent('(Add|include) (the|) article number $(ARTNUMBER* .+) (to the form|to form|)', p => {
     p.play({command: 'addArtNumber', artNumber: p.ARTNUMBER.value});
@@ -118,20 +101,3 @@ intent('Delete the item with the index $(NUMBER) (from the table|)', p => {
     p.play({command: 'deleteItem', index: p.NUMBER.value});
     p.play(`Item with the index ${p.NUMBER.value} has been deleted from the table`);
 }); 
-
-/*intent(`Show me the $(TYPE calculator|pen|safety sign|suitcase)`, p => {
-  p.play({command: 'setType', type: p.TYPE.value});
-  p.play(`Now I am showing all the items containing the word ${p.TYPE.value}`);
-}); */
-
-
-
-/*intent(`Show me the $(DESCRIPTION u:descriptions)`, p => {
-  p.play({command: 'setType', type: p.DESCRIPTION.value});
-  p.play(`Now I am showing all the items containing the word ${p.DESCRIPTION.value}`);
-}); 
-
-intent(`Show me (all|) the (items|) (with the|) index $(INDEX u:index)`, p => {
-  p.play({command: 'setType', type: p.INDEX.value});
-  p.play(`Now I am showing all the items with the index ${p.INDEX.value}`);
-});  */
